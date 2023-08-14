@@ -1,0 +1,97 @@
+import pygame
+from random import randint
+
+win = pygame.display.set_mode((800,600))
+clock = pygame.time.Clock()
+
+pygame.init()
+pygame.mixer.music.load('YES.mp3')
+pygame.mixer.music.play()
+
+background = pygame.image.load('background.jpg')
+background = pygame.transform.scale(background,(800,600))
+
+ship = pygame.transform.scale(pygame.image.load('ship.png'),(100,100))
+ship_rect = ship.get_rect()
+ship_rect.x = 350
+ship_rect.y = 400
+
+class Gamesprite(pygame.sprite.Sprite):
+    def __init__(self,image,x,y,width,height,moves):
+        super().__init__()
+        self.image = pygame.transform.scale(pygame.image.load(image),(width,height))
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        self.moves = moves
+        self.idx = 0
+
+class Enemies(Gamesprite):
+    def update(self):
+        if self.moves[self.idx] == 'l':
+            self.rect.x -= 3
+        if self.moves[self.idx] == 'r':
+            self.rect.x += 3
+        if self.moves[self.idx] == 'u':
+            self.rect.y -= 3
+        if self.moves[self.idx] == 'd':
+            self.rect.y += 3
+
+enemy1 = Enemies('enemy.png',50,0,50,50,'l,l,l,l,l,r,r,r,r,r')
+enemy2 = Enemies('enemy.png',150,0,50,50,'l,l,l,l,l,r,r,r,r,r')
+
+enemies = pygame.sprite.Group()
+enemies.add(enemy1)
+enemies.add(enemy2)
+
+class Bullets(Gamesprite):
+    def update(self):
+        if self.moves[self.idx] == 'u':
+            self.rect.y -= 1
+    def draw(self):
+        win.blit(self.image,self.rect)
+
+bullet = Bullets('bullet.png',ship_rect.x,ship_rect.y,10,10,['u'])
+bullets = pygame.sprite.Group()
+bullets.add(bullet)
+
+run = True
+game_over = False
+while run:
+    win.blit(background,(0,0))
+    win.blit(ship,(ship_rect))
+    for e in pygame.event.get():
+        if e.type == pygame.QUIT:
+            run = False
+    if game_over == False:
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_w]:
+            ship_rect.y -= 2
+            if ship_rect.y == 0:
+                ship_rect.y += 2
+        if keys[pygame.K_a]:
+            ship_rect.x -= 2
+            if ship_rect.x == 0:
+                ship_rect.x += 2
+        if keys[pygame.K_s]:
+            ship_rect.y += 2
+            if ship_rect.y == 500:
+                ship_rect.y -= 2
+        if keys[pygame.K_d]:
+            ship_rect.x += 2
+            if ship_rect.x == 0:
+                ship_rect.x -= 2
+        if keys[pygame.K_e]:
+            bullet = Bullets('bullet.png',ship_rect.x + 35,ship_rect.y + 7,30,30,['u'])
+            print(bullets)
+            bullets.add(bullet)
+    
+    pygame.sprite.groupcollide(bullets,enemies,True,True)
+
+    bullets.update()
+    bullets.draw(win)
+    enemies.update()
+    enemies.draw(win)
+
+    pygame.display.update()
+    clock.tick(90)
