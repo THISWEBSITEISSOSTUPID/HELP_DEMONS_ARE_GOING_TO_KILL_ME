@@ -51,7 +51,7 @@ class Bullets(Gamesprite):
     def draw(self):
         win.blit(self.image,self.rect)
 
-bullet = Bullets('bullet.png',ship_rect.x,ship_rect.y,10,10,['u'])
+bullet = Bullets('bullet.png',ship_rect.x,ship_rect.y,1,1,['u'])
 bullets = pygame.sprite.Group()
 bullets.add(bullet)
 
@@ -83,7 +83,6 @@ while run:
                 ship_rect.x -= 2
         if keys[pygame.K_e]:
             bullet = Bullets('bullet.png',ship_rect.x + 35,ship_rect.y + 7,30,30,['u'])
-            print(bullets)
             bullets.add(bullet)
     
     pygame.sprite.groupcollide(bullets,enemies,True,True)
@@ -94,4 +93,4 @@ while run:
     enemies.draw(win)
 
     pygame.display.update()
-    clock.tick(90)
+    clock.tick(90) 
