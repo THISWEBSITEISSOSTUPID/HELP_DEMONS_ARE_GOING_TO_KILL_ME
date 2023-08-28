@@ -16,21 +16,6 @@ ship_rect = ship.get_rect()
 ship_rect.x = 350
 ship_rect.y = 500
 
-shield = pygame.transform.scale(pygame.image.load('shield.png'),(100,80))
-shield_rect = shield.get_rect()
-shield_rect.x = 350
-shield_rect.y = 400
-
-shield2 = pygame.transform.scale(pygame.image.load('shield.png'),(100,80))
-shield2_rect = shield2.get_rect()
-shield2_rect.x = 550
-shield2_rect.y = 400
-
-shield3 = pygame.transform.scale(pygame.image.load('shield.png'),(100,80))
-shield3_rect = shield3.get_rect()
-shield3_rect.x = 150
-shield3_rect.y = 400
-
 class Gamesprite(pygame.sprite.Sprite):
     def __init__(self,image,x,y,width,height,moves):
         super().__init__()
@@ -52,8 +37,8 @@ class Enemies(Gamesprite):
         if self.idx == len(self.moves):
             self.idx = 0
 
-enemy1 = Enemies('enemy.png',50,0,50,50,['l','l','l','l','l','r','r','r','r','r'])
-enemy2 = Enemies('enemy.png',150,0,50,50,'l,l,l,l,l,r,r,r,r,r')
+enemy1 = Enemies('enemy.png',0,0,50,50,['r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l'])
+enemy2 = Enemies('enemy.png',150,0,50,50,['r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l'])
 
 enemies = pygame.sprite.Group()
 enemies.add(enemy1)
@@ -62,7 +47,7 @@ enemies.add(enemy2)
 class Bullets(Gamesprite):
     def update(self):
         if self.moves[self.idx] == 'u':
-            self.rect.y -= 1
+            self.rect.y -= 3
     def draw(self):
         win.blit(self.image,self.rect)
 
@@ -70,23 +55,33 @@ bullet = Bullets('bullet.png',ship_rect.x,ship_rect.y,1,1,['u'])
 bullets = pygame.sprite.Group()
 bullets.add(bullet)
 
+class Shields(Gamesprite):
+    def update(self):
+        if self.moves[self.idx] == 'u':
+            self.rect.y -= 1
+    def draw(self):
+        win.blit(self.image,self.rect)
+
+shield1 = Shields('shield.png',350,400,100,80,[])
+shield2 = Shields('shield.png',550,400,100,80,[])
+shield3 = Shields('shield.png',150,400,100,80,[])
+shields = pygame.sprite.Group()
+shields.add(shield1,shield2,shield3)
+
 run = True
 game_over = False
 while run:
     win.blit(background,(0,0))
     win.blit(ship,(ship_rect))
-    win.blit(shield,(shield_rect))
-    win.blit(shield2,(shield2_rect))
-    win.blit(shield3,(shield3_rect))
+    for e in shields:
+        e.draw()
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
             run = False
         if e.type == pygame.KEYDOWN:
             if e.key == pygame.K_e:
                 bullet = Bullets('bullet.png',ship_rect.x + 35,ship_rect.y + 7,30,30,['u'])
-                bullets.add(bullet)
-                if bullets_rect.y == shield_rect:
-                    
+                bullets.add(bullet)                  
     if game_over == False:
         keys = pygame.key.get_pressed()
         if keys[pygame.K_a]:
@@ -99,6 +94,7 @@ while run:
                 ship_rect.x -= 2
 
     pygame.sprite.groupcollide(bullets,enemies,True,True)
+    pygame.sprite.groupcollide(bullets,shields,True,False)
 
     bullets.update()
     bullets.draw(win)
