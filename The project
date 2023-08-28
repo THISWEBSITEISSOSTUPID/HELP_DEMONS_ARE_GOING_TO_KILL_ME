@@ -5,7 +5,7 @@ win = pygame.display.set_mode((800,600))
 clock = pygame.time.Clock()
 
 pygame.init()
-pygame.mixer.music.load('YES.mp3')
+pygame.mixer.music.load('song.mp3')
 pygame.mixer.music.play()
 
 background = pygame.image.load('background.jpg')
@@ -31,18 +31,26 @@ class Enemies(Gamesprite):
         if self.moves[self.idx] == 'l':
             self.rect.x -= 10
             self.idx += 1
-        if self.moves[self.idx] == 'r':
+        elif self.moves[self.idx] == 'r':
             self.rect.x += 10
             self.idx += 1
-        if self.idx == len(self.moves):
+        if self.idx >= len(self.moves):
             self.idx = 0
 
-enemy1 = Enemies('enemy.png',0,0,50,50,['r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l'])
-enemy2 = Enemies('enemy.png',150,0,50,50,['r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l'])
+enemy = Enemies('enemy.png',0,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy1 = Enemies('enemy.png',50,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy2 = Enemies('enemy.png',100,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy3 = Enemies('enemy.png',150,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy4 = Enemies('enemy.png',200,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy5 = Enemies('enemy.png',250,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy6 = Enemies('enemy.png',300,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy7 = Enemies('enemy.png',350,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy8 = Enemies('enemy.png',400,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy9 = Enemies('enemy.png',450,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy10 = Enemies('enemy.png',500,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemies= pygame.sprite.Group()
+enemies.add(enemy,enemy1,enemy2,enemy3,enemy4,enemy5,enemy6,enemy7,enemy8,enemy9,enemy10)
 
-enemies = pygame.sprite.Group()
-enemies.add(enemy1)
-enemies.add(enemy2)
 
 class Bullets(Gamesprite):
     def update(self):
