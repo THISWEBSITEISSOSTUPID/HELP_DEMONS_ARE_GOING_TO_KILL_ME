@@ -37,19 +37,31 @@ class Enemies(Gamesprite):
         if self.idx >= len(self.moves):
             self.idx = 0
 
-enemy = Enemies('enemy.png',0,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy1 = Enemies('enemy.png',50,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy2 = Enemies('enemy.png',100,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy3 = Enemies('enemy.png',150,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy4 = Enemies('enemy.png',200,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy5 = Enemies('enemy.png',250,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy6 = Enemies('enemy.png',300,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy7 = Enemies('enemy.png',350,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy8 = Enemies('enemy.png',400,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy9 = Enemies('enemy.png',450,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy10 = Enemies('enemy.png',500,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy = Enemies('enemy.png',0,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy1 = Enemies('enemy.png',50,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy2 = Enemies('enemy.png',100,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy3 = Enemies('enemy.png',150,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy4 = Enemies('enemy.png',200,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy5 = Enemies('enemy.png',250,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy6 = Enemies('enemy.png',300,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy7 = Enemies('enemy.png',350,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy8 = Enemies('enemy.png',400,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy9 = Enemies('enemy.png',450,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy10 = Enemies('enemy.png',500,0,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+
+enemy11 = Enemies('enemy.png',0,50,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy12 = Enemies('enemy.png',50,50,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy13 = Enemies('enemy.png',100,50,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy14 = Enemies('enemy.png',150,50,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy15 = Enemies('enemy.png',200,50,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy16 = Enemies('enemy.png',250,50,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy17 = Enemies('enemy.png',300,50,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy18 = Enemies('enemy.png',350,50,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy19 = Enemies('enemy.png',400,50,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy20 = Enemies('enemy.png',450,50,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
+enemy21 = Enemies('enemy.png',500,50,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
 enemies= pygame.sprite.Group()
-enemies.add(enemy,enemy1,enemy2,enemy3,enemy4,enemy5,enemy6,enemy7,enemy8,enemy9,enemy10)
+enemies.add(enemy,enemy1,enemy2,enemy3,enemy4,enemy5,enemy6,enemy7,enemy8,enemy9,enemy10,enemy11,enemy12,enemy13,enemy14,enemy15,enemy16,enemy17,enemy18,enemy19,enemy20,enemy21)
 
 
 class Bullets(Gamesprite):
@@ -76,6 +88,7 @@ shield3 = Shields('shield.png',150,400,100,80,[])
 shields = pygame.sprite.Group()
 shields.add(shield1,shield2,shield3)
 
+frame_count = 0
 run = True
 game_over = False
 while run:
@@ -104,10 +117,15 @@ while run:
     pygame.sprite.groupcollide(bullets,enemies,True,True)
     pygame.sprite.groupcollide(bullets,shields,True,False)
 
+    frame_count += 1
+
+    if frame_count > 2:
+        enemies.update()
+        frame_count = 0
+
     bullets.update()
     bullets.draw(win)
-    enemies.update()
     enemies.draw(win)
 
     pygame.display.update()
-    clock.tick(90) 
+    clock.tick(90)
