@@ -8,6 +8,11 @@ pygame.init()
 pygame.mixer.music.load('song.mp3')
 pygame.mixer.music.play()
 
+font = pygame.font.Font(None, 35)
+win_msg = font.render('YOU WIN!',False,(0,255,0))
+lose_msg = font.render('YOU LOSE!',False,(255,0,0))
+msg = win_msg
+
 background = pygame.image.load('background.jpg')
 background = pygame.transform.scale(background,(800,600))
 
@@ -60,20 +65,9 @@ enemy18 = Enemies('enemy.png',350,50,50,50,['r','r','r','r','r','r','r','r','r',
 enemy19 = Enemies('enemy.png',400,50,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
 enemy20 = Enemies('enemy.png',450,50,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
 enemy21 = Enemies('enemy.png',500,50,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-
-enemy22 = Enemies('enemy.png',0,100,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy23 = Enemies('enemy.png',50,100,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy24 = Enemies('enemy.png',100,100,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy25 = Enemies('enemy.png',150,100,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy26 = Enemies('enemy.png',200,100,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy27 = Enemies('enemy.png',250,100,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy28 = Enemies('enemy.png',300,100,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy29 = Enemies('enemy.png',350,100,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy30 = Enemies('enemy.png',400,100,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy31 = Enemies('enemy.png',450,100,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
-enemy32 = Enemies('enemy.png',500,100,50,50,['r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','r','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l','l'])
 enemies= pygame.sprite.Group()
-enemies.add(enemy,enemy1,enemy2,enemy3,enemy4,enemy5,enemy6,enemy7,enemy8,enemy9,enemy10,enemy11,enemy12,enemy13,enemy14,enemy15,enemy16,enemy17,enemy18,enemy19,enemy20,enemy21,enemy22,enemy23,enemy24,enemy25,enemy26,enemy27,enemy28,enemy29,enemy30,enemy31,enemy32)
+enemies.add(enemy,enemy1,enemy2,enemy3,enemy4,enemy5,enemy6,enemy7,enemy8,enemy9,enemy10,enemy11,enemy12,enemy13,enemy14,enemy15,enemy16,enemy17,enemy18,enemy19,enemy20,enemy21)
+
 
 class Bullets(Gamesprite):
     def update(self):
@@ -127,6 +121,9 @@ while run:
 
     pygame.sprite.groupcollide(bullets,enemies,True,True)
     pygame.sprite.groupcollide(bullets,shields,True,False)
+
+    if len(enemies) == 0:
+        
 
     frame_count += 1
 
