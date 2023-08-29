@@ -5,7 +5,10 @@ from random import randint
 win = pygame.display.set_mode((800,600))
 clock = pygame.time.Clock()
 
-
+font = pygame.font.Font(None, 35)
+win_msg = font.render('YOU WIN!',False,(0,255,0))
+lose_msg = font.render('U SUCK THIS IS WHY UR FATHER LEFT U LOL!!!!',False,(255,0,0))
+msg = win_msg
 
 pygame.init()
 pygame.mixer.music.load('song.mp3')
