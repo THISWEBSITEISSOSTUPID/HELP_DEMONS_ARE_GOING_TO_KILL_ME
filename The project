@@ -5,7 +5,7 @@ pygame.init()
 win = pygame.display.set_mode((800,600))
 clock = pygame.time.Clock()
 
-font = pygame.font.Font(None, 35)
+font = pygame.font.Font(None, 50)
 win_msg = font.render('YOU WIN!',False,(0,255,0))
 lose_msg = font.render('YOU LOSE!',False,(255,0,0))
 msg = win_msg
@@ -143,6 +143,9 @@ while run:
     if frame_count > 2:
         enemies.update()
         frame_count = 0
+    
+    if game_over == True:
+        win.blit(msg,(10,10))
 
     bullets.update()
     bullets.draw(win)
