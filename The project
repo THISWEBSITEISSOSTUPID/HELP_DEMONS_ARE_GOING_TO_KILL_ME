@@ -8,11 +8,11 @@ clock = pygame.time.Clock()
 font = pygame.font.Font(None, 50)
 win_msg = font.render('YOU WIN!',False,(0,255,0))
 msg = win_msg
-
+'''
 pygame.init()
 pygame.mixer.music.load('song.mp3')
 pygame.mixer.music.play()
-
+'''
 background = pygame.image.load('background.jpg')
 background = pygame.transform.scale(background,(800,600))
 
@@ -83,11 +83,11 @@ enemies.add(enemy,enemy1,enemy2,enemy3,enemy4,enemy5,enemy6,enemy7,enemy8,enemy9
 class Bullets(Gamesprite):
     def update(self):
         if self.moves[self.idx] == 'u':
-            self.rect.y -= 3
+            self.rect.y -= 7
     def draw(self):
         win.blit(self.image,self.rect)
 
-bullet = Bullets('bullet.png',ship_rect.x,ship_rect.y,1,1,['u'])
+bullet = Bullets('bullet.png',ship_rect.x,ship_rect.y,0,0,['u'])
 bullets = pygame.sprite.Group()
 bullets.add(bullet)
 
@@ -110,10 +110,10 @@ game_over = False
 while run:
     win.blit(background,(0,0))
     win.blit(ship,(ship_rect))
-'''
+    '''
     for e in shields:
         e.draw()
-'''
+    '''
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
             run = False
@@ -124,25 +124,25 @@ while run:
     if game_over == False:
         keys = pygame.key.get_pressed()
         if keys[pygame.K_a]:
-            ship_rect.x -= 2
+            ship_rect.x -= 3
             if ship_rect.x == 0:
-                ship_rect.x += 2
+                ship_rect.x += 3
         if keys[pygame.K_d]:
-            ship_rect.x += 2
+            ship_rect.x += 3
             if ship_rect.x == 700:
-                ship_rect.x -= 2
+                ship_rect.x -= 3
 
     pygame.sprite.groupcollide(bullets,enemies,True,True)
-'''
+    '''
     pygame.sprite.groupcollide(bullets,shields,True,False)
-'''
+    '''
     if len(enemies) == 0:
         game_over = True
         msg = win_msg
 
-    frame_count += 1
+    frame_count += 2
 
-    if frame_count > 2:
+    if frame_count > 3:
         enemies.update()
         frame_count = 0
     
