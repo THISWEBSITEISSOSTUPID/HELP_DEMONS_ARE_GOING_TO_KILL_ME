@@ -7,7 +7,6 @@ clock = pygame.time.Clock()
 
 font = pygame.font.Font(None, 50)
 win_msg = font.render('YOU WIN!',False,(0,255,0))
-lose_msg = font.render('YOU LOSE!',False,(255,0,0))
 msg = win_msg
 
 pygame.init()
@@ -98,21 +97,23 @@ class Shields(Gamesprite):
             self.rect.y -= 1
     def draw(self):
         win.blit(self.image,self.rect)
-
+'''
 shield1 = Shields('shield.png',350,400,100,80,[])
 shield2 = Shields('shield.png',550,400,100,80,[])
 shield3 = Shields('shield.png',150,400,100,80,[])
 shields = pygame.sprite.Group()
 shields.add(shield1,shield2,shield3)
-
+'''
 frame_count = 0
 run = True
 game_over = False
 while run:
     win.blit(background,(0,0))
     win.blit(ship,(ship_rect))
+'''
     for e in shields:
         e.draw()
+'''
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
             run = False
@@ -132,8 +133,9 @@ while run:
                 ship_rect.x -= 2
 
     pygame.sprite.groupcollide(bullets,enemies,True,True)
+'''
     pygame.sprite.groupcollide(bullets,shields,True,False)
-
+'''
     if len(enemies) == 0:
         game_over = True
         msg = win_msg
